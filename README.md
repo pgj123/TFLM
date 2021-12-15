@@ -76,9 +76,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ![스크린샷, 2021-12-15 20-35-39](https://user-images.githubusercontent.com/76988777/146179567-d7276e06-51c6-4284-b8ea-6ccf0aa49c25.png)
 
-
-
-ddddd
+### 1. StartModelAllocation
 
 
 
