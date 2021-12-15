@@ -58,7 +58,12 @@ tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전�
 
 ![스크린샷, 2021-12-15 20-05-30](https://user-images.githubusercontent.com/76988777/146175588-4fcaaae7-5fcf-4567-9551-d9aeecbeb518.png)
 
-앞서 인터프리터에 지정된 모델의 tensor들을 tensor_arena 공간
+앞서 인터프리터에 지정된 모델의 tensor들을 tensor_arena 공간에 할당한다.
+
+
+
+
+
 
 
 참고자료 : https://www.tensorflow.org/lite/
