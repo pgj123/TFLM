@@ -74,9 +74,9 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 위 함수는 micro_interpreter.h에 선언된 MicroInterpreter class에 속에 있는 메소드로 아래와 같은 순서로 수행된다.
 
+![스크린샷, 2021-12-15 20-35-39](https://user-images.githubusercontent.com/76988777/146179567-d7276e06-51c6-4284-b8ea-6ccf0aa49c25.png)
 
 
-![스크린샷, 2021-12-15 20-33-19](https://user-images.githubusercontent.com/76988777/146179340-89b67549-7bb2-43a2-9b03-4f939450c2aa.png)
 
 ddddd
 
