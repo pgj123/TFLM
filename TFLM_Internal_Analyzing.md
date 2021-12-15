@@ -28,9 +28,9 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 
 + 입력, 출력, 중간 결과 배열들을 보관하기 위해
 + 추론 과정에 있어 읽기가 수행되며 동시에 추론 완료 시 까지 유지되어야 하는 영구적인 특성을 갖는 버퍼를 보관하기 위해
-+ 해당 공간을 공유하여 수동 메모리 관리를 효율적으로 수행하기 위해
++ 해당 공간을 공유함으로써 수동 메모리 관리를 효율적으로 수행하기 위해
 
-또한 Arena 영역은 Head section, Temp section, Tail section의 이름을 갖는 논리적인 세 영역으로 구분되는데, Tail section은 지정된 arena 주소의 끝에서부터 공간이 할당됨에 따라 arena의 시작주소 방향으로 확장되고, Head section은 반대로 시작주소에서 증가하는 방향으로 확장된다. 따라서 추론 과정 중 arena 영역의 공간 부족 현상은 Head section과 Tail section이 교차하는 상황이 발생하는 경우에 일어난다.
+또한 Arena 영역은 Head section, Temp section, Tail section의 이름을 갖는 논리적인 세 영역으로 구분되는데, Tail section은 지정된 arena 주소의 끝에서부터 공간이 할당됨에 따라 arena의 시작주소 방향으로 확장되고, Head section은 반대로 시작주소에서 증가하는 방향으로 확장된다. 따라서 추론 과정 중 arena 영역의 공간 부족 현상은 Head section과 Tail section이 교차하는 상황이 발생하는 경우에 일어난다. Temp section은 Head section의 끝 주소에서부터 시작되며, arena의 마지막 주소를 향해 증가하는 방향으로 확장된다.
 
 
 
@@ -38,6 +38,9 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 
 
 ### Head Section
+
+추론과정이 완료되는 시점까지 계속 보관되어야 할 필요가 없는, non-persistent한 특성을 지닌 버퍼들이 저장되는 영역이다. 대표적으로 CMSIS-NN과 같은 뉴럴 네트워크 추론에 최적화된 함수들이 선언된 헤더 파일을 참조하여 추론에 있어 사용될 함수들을 골라(scratch 하여) 버퍼(scratch buffer)에 저장되는 예시가 있다.
+
 
 
 
