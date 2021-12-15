@@ -31,14 +31,14 @@ TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습�
 
 위 과정을 통해 직렬화된 char 배열인 cifar10_lenet_original_no_quant라는 데이터를 사용하여(역직렬화 하여) 인스턴스화 한다. 이후 모델에서 스키마 버전이 사용 중인 버전화 호환되는지를 확인하는 절차를 수행한다.
 
-
+***
 
 ### 2. Operations resolver 선언
 
 ![스크린샷, 2021-12-15 19-53-54](https://user-images.githubusercontent.com/76988777/146173883-3a458826-b35f-4b87-9448-653c2b61f21f.png)
 
 AllOpsResolver는 마이크로컨트롤러용 TensorFlow Lite에서 사용할 수 있는 모든 연산을 로드하며, 여기에 많은 메모리가 사용된다. 특정 모델은 이러한 연산의 일부만 사용하므로 실제 어플리케이션에서는 필요한 연산만 로드하는 것이 좋다.
-
+***
 
 
 ### 3. tensor_arena 메모리 할당
@@ -46,19 +46,20 @@ AllOpsResolver는 마이크로컨트롤러용 TensorFlow Lite에서 사용할 �
 ![스크린샷, 2021-12-15 19-56-26](https://user-images.githubusercontent.com/76988777/146174241-1845a5db-0146-4c72-9582-508b2a1e0302.png)
 
 입력, 출력, 및 중간 layer 결과값 저장을 위한 배열에 대해 일정량의 메모리를 미리 할당해야 한다. 이 메모리는 tensor_arena_size 크기의 uint8_t 배열로 제공됩니다. 사용 중인 보드가 갖는 SRAM 용량 크기 및 사용하려는 모델의 크기를 함께 고려하여 실험적으로 적절한 값을 찾아야 한다. 
-
+***
 
 ### 4. interpreter 인스턴스 생성
 
 ![스크린샷, 2021-12-15 20-04-06](https://user-images.githubusercontent.com/76988777/146175318-f3e1d909-e636-442c-a954-2fb0ca942bd5.png)
 
 tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전달한다.
-
+***
 ### 5. interpreter에 tensor들을 할당
 
 ![스크린샷, 2021-12-15 20-05-30](https://user-images.githubusercontent.com/76988777/146175588-4fcaaae7-5fcf-4567-9551-d9aeecbeb518.png)
 
 앞서 인터프리터에 지정된 모델의 tensor들을 tensor_arena 공간에 할당한다.
+***
 
 
 # Allocate_Tensors()
