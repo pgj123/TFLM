@@ -176,7 +176,11 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ![image](https://user-images.githubusercontent.com/76988777/146242180-61c0faf6-9015-427d-9eb4-999261f7ad2f.png)
 
-+ 이 메소드는 앞서 설명한 StartModelAllocation 메소드가 수행된 이후 출력되도록 하여 SubgraphAllocations 구조체가 업데이트 된 상태의 입력인자를 가진 채로 호출되어야 한다. 입력인자로 받는 ScratchBufferHandle의 정보가 갱신되며 현재 subgraph index 위치에 저장되어 있는 tensor들의 정보들을 바탕으로 메모리 사용 계획을 수립한다. 또한 수립된 계획에 따라 ScratchBufferHandle에 요청할 시점들도 계획한다. 이를 통해 계획된 offset들을 바탕으로 eval tensor들을 갱신한다. ScratchBufferHandle 구조체에 저장된 계획안은 차후 실사용 시점에 GetScratchBuffer 메소드를 통해 활용된다.
++ 이 메소드는 앞서 설명한 StartModelAllocation 메소드가 수행된 이후 출력되도록 하여 SubgraphAllocations 구조체가 업데이트 된 상태의 입력인자를 가진 채로 호출되어야 한다. 
++ 입력인자로 받는 ScratchBufferHandle의 정보가 갱신되며 현재 subgraph index 위치에 저장되어 있는 tensor들의 정보들을 바탕으로 메모리 사용 계획을 수립한다. 
++ 또한, 수립된 계획에 따라 ScratchBufferHandle에 요청할 시점들도 기록한다. 
++ 이를 통해 계획된 offset들을 바탕으로 eval tensor들을 갱신한다. 
++ ScratchBufferHandle 구조체에 저장된 계획안은 차후 실사용 시점에 GetScratchBuffer 메소드를 통해 활용된다.
 
 
 ***
