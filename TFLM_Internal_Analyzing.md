@@ -170,4 +170,26 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 + 다시 node와 registration 값들을 불러온 후, graph가 사용할 준비가 완료되었는지 체크하는 과정으로 통과되면 최종 allocation이 완료되었다고 판단이 가능하다.
 
+
+### 6. FinishModelAllocation
+
+![image](https://user-images.githubusercontent.com/76988777/146242180-61c0faf6-9015-427d-9eb4-999261f7ad2f.png)
+
+
+
+
+
+### 7~8. AllocatePersistentBuffer & AllocatePersistentTfLiteTensor
+
+![image](https://user-images.githubusercontent.com/76988777/146240218-dd5f26c1-9136-4081-bfbb-5d8d641aea3e.png)
+
++ input tensor와 output tensor를 위한 메모리를 Tail Section에 할당한다. 위 사진은 해당 과정 중 input tensor를 할당하는 과정이다.
+
+### 9. ResetVariableTensors
+
+![image](https://user-images.githubusercontent.com/76988777/146241402-03ea4390-545c-4afe-8fd2-03d7af6fb2b1.png)
+
++ 여태 셋팅한 subgraph 정보 중 tensor들을 for문을 돌면서 확인하여, 모델에서 variable tensor에 해당하는 경우들을 모두 찾아, 0으로 memset(zeros out) 처리한다.
+
+
 참고자료 : https://www.tensorflow.org/lite/
