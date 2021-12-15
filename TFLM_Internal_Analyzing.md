@@ -142,6 +142,32 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ![image](https://user-images.githubusercontent.com/76988777/146232198-874f3faa-df3c-4e1c-8e6f-5845f9570507.png)
 
+***
 
+### 3. PrepareNodeAndRegistrationDataFromFlatbuffer
+
+![image](https://user-images.githubusercontent.com/76988777/146232902-c33aff9e-7254-4c7e-b9c8-ed6f2d48ae54.png)
+
++ FlatBuffer에 있는 학습된 모델과 관련된 메타데이터를 참조하여 operation option type을 판단하는 부분이다. 제한된 개수로 지원되는 내장형 operation option type에 해당되는 경우와, FlatBuffer로 변환 간 사용자 지정 operation type 지정 함수를 사용한 결과가 반영된 custom option type인 경우를 구분한다.
+
+![image](https://user-images.githubusercontent.com/76988777/146234530-1ade4c44-bcb2-4221-b0fa-0644b4a57b93.png)
+
++ interpreter 인스턴스에 매핑되어 있는 op_resolver 멤버를 이용하여 현재 시점에서 확인된 operation type을 어떤 함수로 파싱할지를 판단한다. 현재 시점이란, 본 PrepareNodeAndRegistrationDataFromFlatbuffer 함수에서 모든 opeartion들에 대해 반복문을 돌며 수행되는 과정 중 해당되는 opeartion과 관련된 시점을 의미한다.
+
+![image](https://user-images.githubusercontent.com/76988777/146235155-8754e92f-cc14-45d0-bbdf-43ceada8b8db.png)
+
++ FlatBuffer로부터 node의 입출력 데이터 및 내장/사용자정의 데이터를 지정된 node 변수의 멤버로 매핑한다.
+
+### 4. InitSubgraphs
+
+![image](https://user-images.githubusercontent.com/76988777/146235628-16cda086-06c8-4222-9213-f31a56eb3c06.png)
+
++ PrepareNodeAndRegistrationDataFromFlatbuffer에서 매핑이 완료된 내장/사용자정의 데이터를 불러와서 node 별 상황에 맞는 user_data를 받을 수 있도록 초기화한다.
+
+### 5. PrepareSubgraphs
+
+![image](https://user-images.githubusercontent.com/76988777/146236282-a02dcfc7-7860-437a-b990-2e6795fc52e2.png)
+
++ 다시 node와 registration 값들을 불러온 후, graph가 사용할 준비가 완료되었는지 체크하는 과정으로 통과되면 최종 allocation이 완료되었다고 판단이 가능하다.
 
 참고자료 : https://www.tensorflow.org/lite/
