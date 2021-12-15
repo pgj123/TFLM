@@ -24,11 +24,13 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습한 모델을 추론하고자 한다. 이때 추론을 하기 전 TFLM에서 정의된, 정형화된 절차를 통해 추후 모델 추론 과정을 성공적으로 수행하기 위한 준비 단계를 거치게 된다. 해당 과정을 묶어 setup 과정이라고 부르자. TFLM에서 setup 과정은 다음 단계들을 수행한다.
 
 
+
 ### 1. Flatbuffer model 불러오기
 
 ![스크린샷, 2021-12-15 19-42-43](https://user-images.githubusercontent.com/76988777/146172128-c972d4a9-99de-42fc-bfaa-465ea67e05c3.png)
 
 위 과정을 통해 직렬화된 char 배열인 cifar10_lenet_original_no_quant라는 데이터를 사용하여(역직렬화 하여) 인스턴스화 한다. 이후 모델에서 스키마 버전이 사용 중인 버전화 호환되는지를 확인하는 절차를 수행한다.
+
 
 
 ### 2. Operations resolver 선언
@@ -38,9 +40,11 @@ TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습�
 AllOpsResolver는 마이크로컨트롤러용 TensorFlow Lite에서 사용할 수 있는 모든 연산을 로드하며, 여기에 많은 메모리가 사용된다. 특정 모델은 이러한 연산의 일부만 사용하므로 실제 어플리케이션에서는 필요한 연산만 로드하는 것이 좋다.
 
 
+
 ### 3. tensor_arena 메모리 할당
 
 ![스크린샷, 2021-12-15 19-56-26](https://user-images.githubusercontent.com/76988777/146174241-1845a5db-0146-4c72-9582-508b2a1e0302.png)
+
 
 
 ### 4. interpreter 인스턴스 생성
