@@ -24,7 +24,10 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 
 ![image](https://user-images.githubusercontent.com/76988777/146195973-ca2ab75c-d9b6-4176-96dc-7a6d8726bfc4.png)
 
-위 그림은 TFLM의 SRAM 공간 중 
+위 그림은 TFLM의 Arena 영역으로, SRAM 메모리 상에 위치하며 앞선 Setup 과정에서 살펴보았듯이 해당 공간을 포함한 충분한(또는 적절한) 영역의 크기를 사용자가 직접 선언하여 정의된다.
+
+
+
 
 ### Head Section
 
