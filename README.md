@@ -1,6 +1,10 @@
 # TFLM 라이브러리
 
-TFLM C++ 라이브러리는 TensorFlow Lite와 호환되도록 설계되어 기본적으로는 TFLite에서 정의된 구조를 활용하나 MicroAllocator 정의 및마이크로컨트롤러 환경에 필요한 새로운 
+TFLM C++ 라이브러리는 TensorFlow Lite와 호환되도록 설계되어 기본적으로는 TFLite에서 정의된 구조를 통해 접근하되 마이크로컨트롤러 한정 라이브러리를 사용하는 시점에 참조됩니다.
+마이크로컨트롤러용 헤더파일들의 종류 및 역할은 TensorFlow 공식 문서를 참조한 바에 따라 아래와 같습니다.
+
+![스크린샷, 2021-12-15 19-36-41](https://user-images.githubusercontent.com/76988777/146171164-e422cf9e-e0c4-4762-abe8-ada151421e8d.png)
+
 
 # FlatBuffer
 
@@ -30,3 +34,6 @@ TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습�
 2. interpreter 인스턴스 생성
 
 3. interpreter에 tensor들을 할당
+
+
+참고자료 : https://www.tensorflow.org/lite/
