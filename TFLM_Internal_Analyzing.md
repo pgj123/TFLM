@@ -180,7 +180,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 + 입력인자로 받는 ScratchBufferHandle의 정보가 갱신되며 현재 subgraph index 위치에 저장되어 있는 tensor들의 정보들을 바탕으로 메모리 사용 계획을 수립한다. 
 + 이때, 계획된 정보는 AllocationInfo의 이름을 가진 구조체에 저장된다.
 + 또한, 수립된 계획에 따라 ScratchBufferHandle에 요청할 시점들도 기록한다. 
-+ CommitStaticMemoryPlan 메소드 수행 간 AllocationInfoBuilder 구조체의 도움을 받아 최종적으로 결정될 Head Section 영역 및 Temp Section 영역은 반복문을 수행하며 가장 큰 공간을 차지하는 Head Section에 의해 결정된다.
++ CommitStaticMemoryPlan 메소드 수행 간 AllocationInfoBuilder 구조체의 도움을 받으며 최종적으로 결정될 Head Section 영역 및 Temp Section 영역은 반복문을 수행하며 가장 큰 공간을 차지하는 Head Section에 의해 결정된다.
 + 이를 통해 계획된 offset들을 바탕으로 eval tensor들을 갱신한다. 
 + ScratchBufferHandle 구조체에 저장된 계획안은 차후 실사용 시점에 GetScratchBuffer 메소드를 통해 활용된다.
 
