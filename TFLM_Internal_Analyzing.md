@@ -120,7 +120,15 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 ***
 ### 1. StartModelAllocation
 
-![스크린샷, 2021-12-15 20-42-55](https://user-images.githubusercontent.com/76988777/146180512-54f876a1-ded9-4f79-a887-5f49949a5c5f.png)
+![image](https://user-images.githubusercontent.com/76988777/146228685-496666eb-08cb-497d-9bc6-540f8a11ba5f.png)
+
+#### + Tail Section에 메모리를 할당하여 MicroBuiltInDataAllocator를 Interpreter에 최초 매핑하는 과정이다.
+
+![image](https://user-images.githubusercontent.com/76988777/146229317-e153776f-334b-4208-97e6-c21926a1e759.png)
+
+#### + 연산이 수행되는 tensor들을 할당해주는 SubgraphAllocations의 이름을 갖는 구조체가 존재하며 해당 역할을 수행하기 위한 구조체를 할당한다.
+
+
 
 
 
