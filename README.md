@@ -30,11 +30,13 @@ TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습�
 
 위 과정을 통해 직렬화된 char 배열인 cifar10_lenet_original_no_quant라는 데이터를 사용하여(역직렬화 하여) 인스턴스화 한다. 이후 모델에서 스키마 버전이 사용 중인 버전화 호환되는지를 확인하는 절차를 수행한다.
 
+
 2. Operations resolver 선언
 
 ![스크린샷, 2021-12-15 19-53-54](https://user-images.githubusercontent.com/76988777/146173883-3a458826-b35f-4b87-9448-653c2b61f21f.png)
 
 AllOpsResolver는 마이크로컨트롤러용 TensorFlow Lite에서 사용할 수 있는 모든 연산을 로드하며, 여기에 많은 메모리가 사용된다. 특정 모델은 이러한 연산의 일부만 사용하므로 실제 어플리케이션에서는 필요한 연산만 로드하는 것이 좋다.
+
 
 3. tensor_arena 메모리 할당
 
