@@ -30,11 +30,15 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 + 추론 과정에 있어 읽기가 수행되며 동시에 추론 완료 시 까지 유지되어야 하는 영구적인 특성을 갖는 버퍼를 보관하기 위해
 + 해당 공간을 공유하여 수동 메모리 관리를 효율적으로 수행하기 위해
 
+또한 Arena 영역은 Head section, Temp section, Tail section의 이름을 갖는 논리적인 세 영역으로 구분되는데, Tail section은 지정된 arena 주소의 끝에서부터 공간이 할당됨에 따라 arena의 시작주소 방향으로 확장되고, Head section은 반대로 시작주소에서 증가하는 방향으로 확장된다. 따라서 추론 과정 중 arena 영역의 공간 부족 현상은 Head section과 Tail section이 교차하는 상황이 발생하는 경우에 일어난다.
+
+
 
 
 
 
 ### Head Section
+
 
 
 # Overall Structure of this Document
