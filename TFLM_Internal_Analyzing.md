@@ -5,6 +5,7 @@ TFLM C++ 라이브러리는 TensorFlow Lite와 호환되도록 설계되어 기�
 
 ![스크린샷, 2021-12-15 19-36-41](https://user-images.githubusercontent.com/76988777/146171164-e422cf9e-e0c4-4762-abe8-ada151421e8d.png)
 
+***
 
 # FlatBuffer
 
@@ -24,6 +25,7 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 
 타겟 보드의 제약에 맞는 적절한 모델을 찾는 것 역시 필요하지만, 이 이전에 학습된 모델 파일의 FlatBuffer로의 변환은 마이크로컨트롤러 환경에서의 추론을 준비함에 있어 필수적 요소이다. 
 
+***
 # Tensor Arena
 
 ![image](https://user-images.githubusercontent.com/76988777/146195973-ca2ab75c-d9b6-4176-96dc-7a6d8726bfc4.png)
@@ -60,14 +62,14 @@ Arena 영역이 존재하는 생명 주기 동안 영구적으로 저장되는 �
 
 
 
-
+***
 # Overall Structure of this Document
 
 이 문서에서는 학습한 모델이 로드되고, 추론이 일어나기 전 추론 수행을 위한 준비 과정을 실행 순서대로 살펴볼 것이다. 이후, 추론 수행이 실제로 일어나는 과정을 내부적인 흐름에 따라 살펴볼 것이다.
 
 
 
-
+***
 # Setup
 TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습한 모델을 추론하고자 한다. 이때 추론을 하기 전 TFLM에서 정의된, 정형화된 절차를 통해 추후 모델 추론 과정을 성공적으로 수행하기 위한 준비 단계를 거치게 된다. 해당 과정 중 AllocateTensors() 라는 함수가 불리기까지의 과정을 묶어 setup 과정이라고 부르자. TFLM에서 setup 과정은 다음 단계들을 수행한다.
 
@@ -109,7 +111,7 @@ tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전�
 앞서 인터프리터에 지정된 모델의 tensor들을 tensor_arena 공간에 할당한다.
 ***
 _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 함수가 불리기까지의 과정을 살펴보았다._    
-
+***
 # Allocate_Tensors()
 
 위 함수는 micro_interpreter.h에 선언된 MicroInterpreter class에 속에 있는 메소드로 아래와 같은 순서로 수행된다.
