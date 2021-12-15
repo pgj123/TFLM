@@ -20,10 +20,18 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 
 타겟 보드의 제약에 맞는 적절한 모델을 찾는 것 역시 필요하지만, 이 이전에 학습된 모델 파일의 FlatBuffer로의 변환은 마이크로컨트롤러 환경에서의 추론을 준비함에 있어 필수적 요소이다. 
 
+# Tensor Arena
+
+![image](https://user-images.githubusercontent.com/76988777/146195973-ca2ab75c-d9b6-4176-96dc-7a6d8726bfc4.png)
+
+위 그림은 TFLM의 SRAM 공간 중 
+
+### Head Section
+
+
 # Overall Structure of this Document
 
 이 문서에서는 학습한 모델이 로드되고, 추론이 일어나기 전 추론 수행을 위한 준비 과정을 실행 순서대로 살펴볼 것이다. 이후, 추론 수행이 실제로 일어나는 과정을 내부적인 흐름에 따라 살펴볼 것이다.
-
 
 
 
