@@ -14,13 +14,18 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
    1. [Head Section](#Head-Section)
    2. [Temp Section](#Temp-Section)
    3. [Tail Section](#Tail-Section)
-4. [Setup](#Setup)
+4. [Micro 핵심 구조체](#Micro-핵심-구조체)
+   1. [MicroInterpreter](#MicroInterpreter)
+   2. [MicroGraph](#MicroGraph)
+   3. [MicroAllocator](#MicroAllocator)
+   4. [SimpleMemoryAllocator](#SimpleMemoryAllocator)
+5. [Setup](#Setup)
    1. [Flatbuffer model 불러오기](#Flatbuffer-model-불러오기)
    2. [Operations resolver 선언](#Operations-resolver-선언)
    3. [Tensor arena 메모리 할당](#Tensor-arena-메모리-할당)
    4. [Interpreter 인스턴스 생성](#Interpreter-인스턴스-생성)
    5. [Interpreter에 Tensor](#Interpreter에-Tensor들을-할당)
-5. [Allocate_Tensors](#allocate_tensors)
+6. [Allocate_Tensors](#allocate_tensors)
    1. [StartModelAllocation](#StartModelAllocation)
    2. [SetSubgraphAllocations](#SetSubgraphAllocations)
    3. [PrepareNodeAndRegistrationDataFromFlatbuffer](#PrepareNodeAndRegistrationDataFromFlatbuffer)
@@ -106,17 +111,23 @@ Arena 영역이 존재하는 생명 주기 동안 영구적으로 저장되는 �
 
 TFLM을 구성하는 수많은 클래스들이 존재하지만, 내부적인 흐름을 이해하는데 있어 빠져서는 안되는 핵심 구조체들과 그들간의 관계를 정리한 것이다. 
 
-### micro_interpreter
+### MicroInterpreter
 
-+ 포함관계에서 최상단에 위치해 있는 micro_interpreter는 인스턴스 생성 후 추론 종료시 까지 모델 및 arena, op_resolver, error_reporter 뿐 아니라 resource variables, profiler, micro_allocator, micro_graph를 관리하며 생명 주기를 유지한다. 모델 추론을 감독하는 책임자 라고 이해해도 좋다.
++ 포함관계에서 최상단에 위치해 있는 micro_interpreter는 인스턴스 생성 후 추론 종료시 까지 모델 및 arena, op_resolver, error_reporter 뿐 아니라 resource variables, profiler, micro_allocator, micro_graph를 관리하며 생명 주기를 유지한다. 
++ 모델 추론을 감독하는 책임자 라고 이해해도 좋다.
 
-### micro_graph
+### MicroGraph
 
 + micro_allocator를 멤버변수로 가지며, 역직렬화되어 표현된 tflite:Model과 관련된 연산 및 접근, 추론, 준비 등의 프로세스를 책임지는 클래스이다.
 
-### micro_allocator
+### MicroAllocator
 
-+ 추론 준비단계 및 실제 추론 시 필요한 공간을 할당해주는 함수들이 포함되어 있는 클래스이다. 메모리 플래닝, 버퍼 스크래치, Temp Section 초기화, 변수 할당 등과 같은 기능이 있다.
++ 추론 준비단계 및 실제 추론 시 필요한 공간을 할당해주는 함수들이 포함되어 있는 클래스이다.
++ 메모리 플래닝, 버퍼 스크래치, 변수 할당 등과 같은 기능이 있다.
+
+### SimpleMemoryAllocator
+
++ MicroAllocator에 속해 있는 클래스로 메모리 할당 프로세스 중 arena의 Head, Temp, Tail Section 할당 및 사용 중인 공간 출력 함수 등 비교적 간단한 API들이 여기에 집합해 있다.
 
 ***
 # Setup
