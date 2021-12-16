@@ -221,7 +221,7 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 ***
 ### AllocatePersistentBuffer AllocatePersistentTfLiteTensor
 
-![image](https://user-images.githubusercontent.com/76988777/146240218-dd5f26c1-9136-4081-bfbb-5d8d641aea3e.png)
+![image](https://user-images.githubusercontent.com/76988777/146361857-4b15a999-0496-4974-8b6e-c9e93a5f8586.png)
 
 + input tensor와 output tensor를 위한 메모리를 Tail Section에 할당한다. 위 사진은 해당 과정 중 input tensor를 할당하는 과정이다.
 ***
