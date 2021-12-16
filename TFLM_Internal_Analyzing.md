@@ -141,7 +141,7 @@ tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전�
 
 앞서 인터프리터에 지정된 모델의 tensor들을 tensor_arena 공간에 할당한다.
 ***
-_여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 함수가 불리기까지의 과정을 살펴보았다._    
+_여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Allocate_Tensors() 함수가 불리기 직전까지의 과정을 살펴보았다._    
 ***
 # Allocate_Tensors
 
