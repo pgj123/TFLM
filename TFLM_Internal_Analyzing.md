@@ -199,7 +199,7 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 ***
 ### PrepareSubgraphs
 
-![image](https://user-images.githubusercontent.com/76988777/146236282-a02dcfc7-7860-437a-b990-2e6795fc52e2.png)
+![image](https://user-images.githubusercontent.com/76988777/146360183-2cc03eb1-3171-46d8-b570-1700d13d3404.png)
 
 + 다시 node와 registration 값들을 불러온 후, graph가 사용할 준비가 완료되었는지 체크하는 과정으로 통과되면 최종 allocation이 완료되었다고 판단이 가능하다.
 
