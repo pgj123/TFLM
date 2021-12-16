@@ -272,6 +272,9 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 + 여태 셋팅한 subgraph 정보 중 tensor들을 for문을 돌면서 확인하여, 모델에서 variable tensor에 해당하는 경우들을 모두 찾아, 0으로 memset(zeros out) 처리한다.
 ***
 
+_위 9가지 과정을 성공적으로 수행하면 바인딩된 특정 모델은 해당 인터프리터를 통해 추론 프로세스를 수행할 준비를 완료하게 된다._   
+
+***
 
 
 Reference Link 
