@@ -193,12 +193,14 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 ***
 ### InitSubgraphs
 
-![image](https://user-images.githubusercontent.com/76988777/146235628-16cda086-06c8-4222-9213-f31a56eb3c06.png)
+![image](https://user-images.githubusercontent.com/76988777/146362679-0bd6b13a-9155-49f5-89c4-00e1b6c123ac.png)
+
 
 + PrepareNodeAndRegistrationDataFromFlatbuffer에서 매핑이 완료된 내장/사용자정의 데이터를 불러와서 node 별 상황에 맞는 user_data를 받을 수 있도록 초기화한다.
 ***
 ### PrepareSubgraphs
 
+![image](https://user-images.githubusercontent.com/76988777/146362569-b9611370-b39a-451c-92ec-f952fdafa1cf.png)
 
 
 + 다시 node와 registration 값들을 불러온 후, graph가 사용할 준비가 완료되었는지 체크하는 과정으로 통과되면 최종 allocation이 완료되었다고 판단이 가능하다.
