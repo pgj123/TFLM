@@ -11,8 +11,24 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
 1. [TFLM 라이브러리](#TFLM-라이브러리)
 2. [FlatBuffer](#FlatBuffer)
 3. [Tensor Arena](#Tensor-Arena)
+  1. [Head Section](#Head-Section)
+  2. [Temp Section](#Temp-Section)
+  3. [Tail Section](#Tail-Section)
 4. [Setup](#Setup)
+  1. [Flatbuffer model 불러오기](#Flatbuffer-model-불러오기)
+  2. [Operations resolver 선언](#Operations-resolver-선언)
+  3. [Tensor arena 메모리 할당](#Tensor-arena-메모리-할당)
+  4. [Interpreter 인스턴스 생성](#Interpreter-인스턴스-생성)
+  5. [Interpreter에 Tensor](#Interpreter에-Tensor들을-할당)
 5. [Allocate_Tensors](#allocate_tensors)
+  1. [StartModelAllocation](#StartModelAllocation)
+  2. [SetSubgraphAllocations](#SetSubgraphAllocations)
+  3. [PrepareNodeAndRegistrationDataFromFlatbuffer](#PrepareNodeAndRegistrationDataFromFlatbuffer)
+  4. [InitSubgraphs](#InitSubgraphs)
+  5. [PrepareSubgraphs](#PrepareSubgraphs)
+  6. [FinishModelAllocation](#FinishModelAllocation)
+  7~8. [AllocatePersistentBuffer & AllocatePersistentTfLiteTensor](#AllocatePersistentBuffer-&-AllocatePersistentTfLiteTensor)
+  9. [ResetVariableTensors](#ResetVariableTensors)
 
 
 
@@ -106,20 +122,20 @@ AllOpsResolver는 마이크로컨트롤러용 TensorFlow Lite에서 사용할 �
 ***
 
 
-### 3. tensor_arena 메모리 할당
+### 3. Tensor arena 메모리 할당
 
 ![스크린샷, 2021-12-15 19-56-26](https://user-images.githubusercontent.com/76988777/146174241-1845a5db-0146-4c72-9582-508b2a1e0302.png)
 
 입력, 출력, 및 중간 layer 결과값 저장을 위한 배열에 대해 일정량의 메모리를 미리 할당해야 한다. 이 메모리는 tensor_arena_size 크기의 uint8_t 배열로 제공됩니다. 사용 중인 보드가 갖는 SRAM 용량 크기 및 사용하려는 모델의 크기를 함께 고려하여 실험적으로 적절한 값을 찾아야 한다. 
 ***
 
-### 4. interpreter 인스턴스 생성
+### 4. Interpreter 인스턴스 생성
 
 ![스크린샷, 2021-12-15 20-04-06](https://user-images.githubusercontent.com/76988777/146175318-f3e1d909-e636-442c-a954-2fb0ca942bd5.png)
 
 tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전달한다.
 ***
-### 5. interpreter에 tensor들을 할당
+### 5. Interpreter에 tensor들을 할당
 
 ![스크린샷, 2021-12-15 20-05-30](https://user-images.githubusercontent.com/76988777/146175588-4fcaaae7-5fcf-4567-9551-d9aeecbeb518.png)
 
