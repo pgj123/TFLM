@@ -217,7 +217,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 
 ***
-### AllocatePersistentBuffer & AllocatePersistentTfLiteTensor
+### AllocatePersistentBuffer AllocatePersistentTfLiteTensor
 
 ![image](https://user-images.githubusercontent.com/76988777/146240218-dd5f26c1-9136-4081-bfbb-5d8d641aea3e.png)
 
