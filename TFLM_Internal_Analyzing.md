@@ -30,7 +30,7 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
    7. [AllocatePersistentBuffer & AllocatePersistentTfLiteTensor](#allocatepersistentbuffer-allocatepersistenttfLitetensor)
    8. [ResetVariableTensors](#ResetVariableTensors)
 
-
+***
 
 
 
