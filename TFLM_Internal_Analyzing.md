@@ -24,7 +24,7 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
    2. [Operations resolver 선언](#Operations-resolver-선언)
    3. [Tensor arena 메모리 할당](#Tensor-arena-메모리-할당)
    4. [Interpreter 인스턴스 생성](#Interpreter-인스턴스-생성)
-   5. [Interpreter에 Tensor](#Interpreter에-Tensor들을-할당)
+   5. [Interpreter에 Tensor들을 할당](#Interpreter에-Tensor들을-할당)
 6. [Allocate_Tensors](#allocate_tensors)
    1. [StartModelAllocation](#StartModelAllocation)
    2. [SetSubgraphAllocations](#SetSubgraphAllocations)
