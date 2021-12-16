@@ -27,7 +27,7 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
    4. [InitSubgraphs](#InitSubgraphs)
    5. [PrepareSubgraphs](#PrepareSubgraphs)
    6. [FinishModelAllocation](#FinishModelAllocation)
-   7. [AllocatePersistentBuffer & AllocatePersistentTfLiteTensor](#AllocatePersistentBuffer-&-AllocatePersistentTfLiteTensor)
+   7. [AllocatePersistentBuffer & AllocatePersistentTfLiteTensor](#allocatepersistentbuffer-&-allocatepersistenttfLitetensor)
    8. [ResetVariableTensors](#ResetVariableTensors)
 
 
