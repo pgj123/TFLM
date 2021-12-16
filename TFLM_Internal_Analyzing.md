@@ -266,6 +266,6 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 
 
 
-참고자료 : 
+Reference Link 
 + https://www.tensorflow.org/lite/
 + https://github.com/tensorflow/tflite-micro
