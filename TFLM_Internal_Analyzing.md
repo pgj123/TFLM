@@ -12,7 +12,7 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
 2. [FlatBuffer](#FlatBuffer)
 3. [Tensor Arena](#Tensor-Arena)
 4. [Setup](#Setup)
-5. [Allocate_Tensors()](#allocate_tensors())
+5. [Allocate_Tensors](#allocate_tensors)
 
 
 
@@ -127,7 +127,7 @@ tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전�
 ***
 _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 함수가 불리기까지의 과정을 살펴보았다._    
 ***
-# Allocate_Tensors()
+# Allocate_Tensors
 
 본 메소드는 micro_interpreter.h에 선언된 MicroInterpreter class에 속해  있는 메소드로 아래와 같은 순서로 수행된다.
 
