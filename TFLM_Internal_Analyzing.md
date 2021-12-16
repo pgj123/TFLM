@@ -79,26 +79,44 @@ FlatBuffer는 구글에서 개발된 크로스 플랫폼 직렬화 라이브러�
 
 또한 Arena 영역은 Head section, Temp section, Tail section의 이름을 갖는 논리적인 세 영역으로 구분되는데, Tail section은 지정된 arena 주소의 끝에서부터 공간이 할당됨에 따라 arena의 시작주소 방향으로 확장되고, Head section은 반대로 시작주소에서 증가하는 방향으로 확장된다. 따라서 추론 과정 중 arena 영역의 공간 부족 현상은 Head section과 Tail section이 교차하는 상황이 발생하는 경우에 일어난다. Temp section은 Head section의 끝 주소에서부터 시작되며, arena의 마지막 주소를 향해 증가하는 방향으로 확장된다.
 
-
-
-
+***
 
 
 ### Head Section
 
 추론과정이 완료되는 시점까지 계속 보관되어야 할 필요가 없는, non-persistent한 특성을 지닌 버퍼들이 저장되는 영역이다. 대표적으로 CMSIS-NN과 같은 뉴럴 네트워크 추론에 최적화된 함수들이 선언된 헤더 파일을 참조하여 추론에 있어 사용될 함수들을 골라(scratch 하여) 버퍼(scratch buffer)에 저장된다.
 
+***
 ### Temp Section
 
 Head Section와 비교하여 더 짧은 life-cycle을 갖는, temporary한 특성의 데이터들이 저장되는 영역이다. Head Section의 끝 주소를 Temp Section의 시작 주소로 갖기 때문에 Head Section의 확장 및 축소가 일어나기 전 반드시 Temp Section의 리셋 과정이 선행되어야 한다. 대개 한 메소드를 수행하는 시간 정도의 생명 주기를 갖는 일시 데이터들이 저장되는 영역이다.
 
+***
 ### Tail Section
 
 Arena 영역이 존재하는 생명 주기 동안 영구적으로 저장되는 값들과 구조체들이 모두 저장되는 영역이다. 추론 준비 단계에서 FlatBuffer의 양자화 수준과 관련된 정보를 저장하기도 하며, Node & Registration 정보 및 메모리 사용 로그를 기록하는 recording API와 관련된 정보, 입출력 텐서 등 다양한 데이터들이 저장된다.
 
 
 
+***
 
+# Micro 핵심 구조체
+
+![image](https://user-images.githubusercontent.com/76988777/146369370-9416d592-608f-4c69-aee2-d8d62da6495f.png)
+
+TFLM을 구성하는 수많은 클래스들이 존재하지만, 내부적인 흐름을 이해하는데 있어 빠져서는 안되는 핵심 구조체들과 그들간의 관계를 정리한 것이다. 
+
+### micro_interpreter
+
++ 포함관계에서 최상단에 위치해 있는 micro_interpreter는 인스턴스 생성 후 추론 종료시 까지 모델 및 arena, op_resolver, error_reporter 뿐 아니라 resource variables, profiler, micro_allocator, micro_graph를 관리하며 생명 주기를 유지한다. 모델 추론을 감독하는 책임자 라고 이해해도 좋다.
+
+### micro_graph
+
++ micro_allocator를 멤버변수로 가지며, 역직렬화되어 표현된 tflite:Model과 관련된 연산 및 접근, 추론, 준비 등의 프로세스를 책임지는 클래스이다.
+
+### micro_allocator
+
++ 추론 준비단계 및 실제 추론 시 필요한 공간을 할당해주는 함수들이 포함되어 있는 클래스이다. 메모리 플래닝, 버퍼 스크래치, Temp Section 초기화, 변수 할당 등과 같은 기능이 있다.
 
 ***
 # Setup
