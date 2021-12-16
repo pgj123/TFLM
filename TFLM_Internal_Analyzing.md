@@ -160,7 +160,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 + 연산이 수행되는 tensor들을 할당해주는 SubgraphAllocations의 이름을 갖는 구조체가 존재하며 해당 역할을 수행하기 위한 구조체를 할당한다.
 
-![image](https://user-images.githubusercontent.com/76988777/146230506-3234a9b0-d219-4217-a13a-5450f4128f61.png)
+![image](https://user-images.githubusercontent.com/76988777/146358087-01a8f6a6-402b-4d3b-a497-8562e09c0c15.png)
 
 + 앞서 할당한 SubgraphAllocation 구조체의 멤버인 NodeAndRegistration을 사용하기 위한 공간 역시 할당한 후, subgraph_allocations에 매핑한다. 다른 멤버인 TfLiteEvalTensor 역시 동일한 과정을 수행하고,  StartModelAllocation 메소드의 반환형으로써 공간 할당이 완료된 SubgraphAllocations 구조체를 반환한다.
 
@@ -168,11 +168,12 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ### SetSubgraphAllocations
 
-![image](https://user-images.githubusercontent.com/76988777/146231648-741b7dde-a043-4456-84d5-5cb09ef1618e.png)
+![image](https://user-images.githubusercontent.com/76988777/146359004-3e7d6c18-4fdd-4b81-847d-68a16aeb8390.png)
 
 + StartModelAllocation 결과 생성된 SubgraphAllocation을 graph에 매핑한다. 현재 참조되는 graph의 scope는 MicroInterpreter::AllocateTensors에 속해 있으며 MicroInterpreter는 멤버 변수로 graph를 지니고 있다.
 
-![image](https://user-images.githubusercontent.com/76988777/146232198-874f3faa-df3c-4e1c-8e6f-5845f9570507.png)
+![image](https://user-images.githubusercontent.com/76988777/146359164-2b639151-a172-4de3-ad78-fe89428842ee.png)
+
 
 ***
 
