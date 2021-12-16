@@ -27,8 +27,8 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
    4. [InitSubgraphs](#InitSubgraphs)
    5. [PrepareSubgraphs](#PrepareSubgraphs)
    6. [FinishModelAllocation](#FinishModelAllocation)
-   7 ~ 8. [AllocatePersistentBuffer & AllocatePersistentTfLiteTensor](#AllocatePersistentBuffer-&-AllocatePersistentTfLiteTensor)
-   9. [ResetVariableTensors](#ResetVariableTensors)
+   7. [AllocatePersistentBuffer & AllocatePersistentTfLiteTensor](#AllocatePersistentBuffer-&-AllocatePersistentTfLiteTensor)
+   8. [ResetVariableTensors](#ResetVariableTensors)
 
 
 
@@ -106,7 +106,7 @@ TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습�
 
 
 
-### 1. Flatbuffer model 불러오기
+### Flatbuffer model 불러오기
 
 ![스크린샷, 2021-12-15 19-42-43](https://user-images.githubusercontent.com/76988777/146172128-c972d4a9-99de-42fc-bfaa-465ea67e05c3.png)
 
@@ -114,7 +114,7 @@ TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습�
 
 ***
 
-### 2. Operations resolver 선언
+### Operations resolver 선언
 
 ![스크린샷, 2021-12-15 19-53-54](https://user-images.githubusercontent.com/76988777/146173883-3a458826-b35f-4b87-9448-653c2b61f21f.png)
 
@@ -122,20 +122,20 @@ AllOpsResolver는 마이크로컨트롤러용 TensorFlow Lite에서 사용할 �
 ***
 
 
-### 3. Tensor arena 메모리 할당
+### Tensor arena 메모리 할당
 
 ![스크린샷, 2021-12-15 19-56-26](https://user-images.githubusercontent.com/76988777/146174241-1845a5db-0146-4c72-9582-508b2a1e0302.png)
 
 입력, 출력, 및 중간 layer 결과값 저장을 위한 배열에 대해 일정량의 메모리를 미리 할당해야 한다. 이 메모리는 tensor_arena_size 크기의 uint8_t 배열로 제공됩니다. 사용 중인 보드가 갖는 SRAM 용량 크기 및 사용하려는 모델의 크기를 함께 고려하여 실험적으로 적절한 값을 찾아야 한다. 
 ***
 
-### 4. Interpreter 인스턴스 생성
+### Interpreter 인스턴스 생성
 
 ![스크린샷, 2021-12-15 20-04-06](https://user-images.githubusercontent.com/76988777/146175318-f3e1d909-e636-442c-a954-2fb0ca942bd5.png)
 
 tflite::MicroInterpreter 인스턴스를 만들고 앞서 만든 변수를 전달한다.
 ***
-### 5. Interpreter에 tensor들을 할당
+### Interpreter에 tensor들을 할당
 
 ![스크린샷, 2021-12-15 20-05-30](https://user-images.githubusercontent.com/76988777/146175588-4fcaaae7-5fcf-4567-9551-d9aeecbeb518.png)
 
@@ -149,7 +149,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ![스크린샷, 2021-12-15 20-35-39](https://user-images.githubusercontent.com/76988777/146179567-d7276e06-51c6-4284-b8ea-6ccf0aa49c25.png)
 ***
-### 1. StartModelAllocation
+### StartModelAllocation
 
 ![image](https://user-images.githubusercontent.com/76988777/146228685-496666eb-08cb-497d-9bc6-540f8a11ba5f.png)
 
@@ -165,7 +165,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ***
 
-### 2. SetSubgraphAllocations
+### SetSubgraphAllocations
 
 ![image](https://user-images.githubusercontent.com/76988777/146231648-741b7dde-a043-4456-84d5-5cb09ef1618e.png)
 
@@ -175,7 +175,7 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 ***
 
-### 3. PrepareNodeAndRegistrationDataFromFlatbuffer
+### PrepareNodeAndRegistrationDataFromFlatbuffer
 
 ![image](https://user-images.githubusercontent.com/76988777/146232902-c33aff9e-7254-4c7e-b9c8-ed6f2d48ae54.png)
 
@@ -189,20 +189,20 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 + FlatBuffer로부터 node의 입출력 데이터 및 내장/사용자정의 데이터를 지정된 node 변수의 멤버로 매핑한다.
 ***
-### 4. InitSubgraphs
+### InitSubgraphs
 
 ![image](https://user-images.githubusercontent.com/76988777/146235628-16cda086-06c8-4222-9213-f31a56eb3c06.png)
 
 + PrepareNodeAndRegistrationDataFromFlatbuffer에서 매핑이 완료된 내장/사용자정의 데이터를 불러와서 node 별 상황에 맞는 user_data를 받을 수 있도록 초기화한다.
 ***
-### 5. PrepareSubgraphs
+### PrepareSubgraphs
 
 ![image](https://user-images.githubusercontent.com/76988777/146236282-a02dcfc7-7860-437a-b990-2e6795fc52e2.png)
 
 + 다시 node와 registration 값들을 불러온 후, graph가 사용할 준비가 완료되었는지 체크하는 과정으로 통과되면 최종 allocation이 완료되었다고 판단이 가능하다.
 
 ***
-### 6. FinishModelAllocation
+### FinishModelAllocation
 
 ![image](https://user-images.githubusercontent.com/76988777/146242180-61c0faf6-9015-427d-9eb4-999261f7ad2f.png)
 
@@ -217,13 +217,13 @@ _여기까지 직렬화된 모델을 로드하는 것 부터 Allocate_Tensors() 
 
 
 ***
-### 7~8. AllocatePersistentBuffer & AllocatePersistentTfLiteTensor
+### AllocatePersistentBuffer & AllocatePersistentTfLiteTensor
 
 ![image](https://user-images.githubusercontent.com/76988777/146240218-dd5f26c1-9136-4081-bfbb-5d8d641aea3e.png)
 
 + input tensor와 output tensor를 위한 메모리를 Tail Section에 할당한다. 위 사진은 해당 과정 중 input tensor를 할당하는 과정이다.
 ***
-### 9. ResetVariableTensors
+### ResetVariableTensors
 
 ![image](https://user-images.githubusercontent.com/76988777/146241402-03ea4390-545c-4afe-8fd2-03d7af6fb2b1.png)
 
