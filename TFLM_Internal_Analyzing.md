@@ -179,7 +179,7 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 
 ### PrepareNodeAndRegistrationDataFromFlatbuffer
 
-![image](https://user-images.githubusercontent.com/76988777/146363030-6c18fe13-2693-40ba-b8ee-b1f473db6acf.png)
+![image](https://user-images.githubusercontent.com/76988777/146366658-736bf320-8e41-4040-a375-031c9217b852.png)
 
 + FlatBuffer에 있는 학습된 모델과 관련된 메타데이터를 참조하여 operation option type을 판단하는 부분이다. 제한된 개수로 지원되는 내장형 operation option type에 해당되는 경우와, FlatBuffer로 변환 간 사용자 지정 operation type 지정 함수를 사용한 결과가 반영된 custom option type인 경우를 구분한다.
 ***
