@@ -206,7 +206,8 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 ***
 ### FinishModelAllocation
 
-![image](https://user-images.githubusercontent.com/76988777/146242180-61c0faf6-9015-427d-9eb4-999261f7ad2f.png)
+![image](https://user-images.githubusercontent.com/76988777/146362193-e15fe2d9-76cb-4c7d-bee5-c8ce184fcc41.png)
+
 
 + 이 메소드는 앞서 설명한 StartModelAllocation 메소드가 수행된 이후 출력되도록 하여 SubgraphAllocations 구조체가 업데이트 된 상태의 입력인자를 가진 채로 호출되어야 한다. 
 + 입력인자로 받는 ScratchBufferHandle의 정보가 갱신되며 현재 subgraph index 위치에 저장되어 있는 tensor들의 정보들을 바탕으로 메모리 사용 계획을 수립한다. 
