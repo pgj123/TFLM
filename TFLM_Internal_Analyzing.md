@@ -172,7 +172,7 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 
 + StartModelAllocation 결과 생성된 SubgraphAllocation을 graph에 매핑한다. 현재 참조되는 graph의 scope는 MicroInterpreter::AllocateTensors에 속해 있으며 MicroInterpreter는 멤버 변수로 graph를 지니고 있다.
 
-![image](https://user-images.githubusercontent.com/76988777/146360031-ec6c0364-90b5-4d76-aaf7-505190ef7002.png)
+![image](https://user-images.githubusercontent.com/76988777/146364546-6f8d2397-06db-425b-a56e-9c09a8a9cda9.png)
 
 
 ***
