@@ -181,7 +181,8 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 ***
 # Allocate_Tensors
 
-본 메소드는 micro_interpreter.h에 선언된 MicroInterpreter class에 속해  있는 메소드로 아래와 같은 순서로 수행된다.
+앞의 Setup 과정을 거쳤다고 TFLM에서 모델 추론을 바로 진행 할 수 있는 것이 아니다.
+모델 추론을 위한 본격적인 준비는 Allocate_Tensors 메소드를 성공적으로 수행함에 따라 완료된다. 본 메소드는 micro_interpreter.h에 선언된 MicroInterpreter class에 속해 있는 메소드로 단순히 tensor들을 할당해 준다고 이해하고 넘어가기엔 많은 절차들이 아래와 같은 순서로 수행된다.
 
 ![스크린샷, 2021-12-15 20-35-39](https://user-images.githubusercontent.com/76988777/146179567-d7276e06-51c6-4284-b8ea-6ccf0aa49c25.png)
 ***
