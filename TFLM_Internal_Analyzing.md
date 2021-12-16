@@ -14,7 +14,7 @@ TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경
    1. [Head Section](#Head-Section)
    2. [Temp Section](#Temp-Section)
    3. [Tail Section](#Tail-Section)
-4. [Micro 핵심 구조체](#Micro-핵심-구조체)
+4. [핵심 구조체](#핵심-구조체)
    1. [MicroInterpreter](#MicroInterpreter)
    2. [MicroGraph](#MicroGraph)
    3. [MicroAllocator](#MicroAllocator)
@@ -105,7 +105,7 @@ Arena 영역이 존재하는 생명 주기 동안 영구적으로 저장되는 �
 
 ***
 
-# Micro 핵심 구조체
+# 핵심 구조체
 
 ![image](https://user-images.githubusercontent.com/76988777/146369370-9416d592-608f-4c69-aee2-d8d62da6495f.png)
 
