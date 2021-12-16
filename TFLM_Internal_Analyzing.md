@@ -151,16 +151,14 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 ***
 ### StartModelAllocation
 
-![image](https://user-images.githubusercontent.com/76988777/146357415-1963864d-da90-4b82-aeca-b6f367175a58.png)
+![image](https://user-images.githubusercontent.com/76988777/146367197-5c3824da-3637-44b0-86b9-ab020b68d187.png)
 
 
 + Tail Section에 메모리를 할당하여 MicroBuiltInDataAllocator를 Interpreter에 최초 매핑하는 과정이다.
 
-![image](https://user-images.githubusercontent.com/76988777/146357519-11666048-aae9-4ea8-97f5-2a38ef3fea2f.png)
+![image](https://user-images.githubusercontent.com/76988777/146367410-ef6a9d68-1b87-47c7-bb72-10dcea3614c3.png)
 
 + 연산이 수행되는 tensor들을 할당해주는 SubgraphAllocations의 이름을 갖는 구조체가 존재하며 해당 역할을 수행하기 위한 구조체를 할당한다.
-
-![image](https://user-images.githubusercontent.com/76988777/146358087-01a8f6a6-402b-4d3b-a497-8562e09c0c15.png)
 
 + 앞서 할당한 SubgraphAllocation 구조체의 멤버인 NodeAndRegistration을 사용하기 위한 공간 역시 할당한 후, subgraph_allocations에 매핑한다. 다른 멤버인 TfLiteEvalTensor 역시 동일한 과정을 수행하고,  StartModelAllocation 메소드의 반환형으로써 공간 할당이 완료된 SubgraphAllocations 구조체를 반환한다.
 
@@ -168,7 +166,7 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 
 ### SetSubgraphAllocations
 
-![image](https://user-images.githubusercontent.com/76988777/146359004-3e7d6c18-4fdd-4b81-847d-68a16aeb8390.png)
+![image](https://user-images.githubusercontent.com/76988777/146367057-1503cc1b-393e-43e3-8660-0414489007ec.png)
 
 + StartModelAllocation 결과 생성된 SubgraphAllocation을 graph에 매핑한다. 현재 참조되는 graph의 scope는 MicroInterpreter::AllocateTensors에 속해 있으며 MicroInterpreter는 멤버 변수로 graph를 지니고 있다.
 
