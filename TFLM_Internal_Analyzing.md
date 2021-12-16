@@ -1,3 +1,7 @@
+![image](https://user-images.githubusercontent.com/76988777/146375522-cfb46ed1-661b-4a9d-a13b-e9de85758f45.png)
+
+
+
 # 문서 기술의 목적
 
 TensorFlow 공식 문서를 통해 마이크로컨트롤러 기반 추론 환경을 TFLM을 통해 조성하는 방법론에 대한 내용은 공식적으로 문서화되어 있지만, 런타임 시점부터 추론을 수행하기 위한 준비과정까지를 실행 흐름에 따라 내부적으로 어떠한 접근이 일어나는 지를 설명한 문서는 없었다.
@@ -280,3 +284,7 @@ _위 9가지 과정을 성공적으로 수행하면 바인딩된 특정 모델�
 Reference Link 
 + https://www.tensorflow.org/lite/
 + https://github.com/tensorflow/tflite-micro
+
+
+![image](https://user-images.githubusercontent.com/76988777/146375611-9d1846dd-dc91-4f21-8294-91d624479924.png)
+
