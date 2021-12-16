@@ -131,7 +131,7 @@ TFLM을 구성하는 수많은 클래스들이 존재하지만, 내부적인 흐
 
 ***
 # Setup
-TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습한 모델을 추론하고자 한다. 이때 추론을 하기 전 TFLM에서 정의된, 정형화된 절차를 통해 추후 모델 추론 과정을 성공적으로 수행하기 위한 준비 단계를 거치게 된다. 해당 과정 중 AllocateTensors() 라는 함수가 불리기까지의 과정을 묶어 setup 과정이라고 부르자. TFLM에서 setup 과정은 다음 단계들을 수행한다.
+TFLM 라이브러리를 사용하여 마이크로컨트롤러를 통해 학습한 모델을 추론하고자 할 때 추론을 하기 전 TFLM에서 정의된, 정형화된 절차를 통해 추후 모델 추론 과정을 성공적으로 수행하기 위한 준비 단계를 거치게 된다. 해당 과정 중 AllocateTensors() 라는 함수가 불리기까지의 과정을 묶어 setup 과정이라고 부르자. TFLM에서 setup 과정은 다음 단계들을 수행한다.
 
 
 
@@ -266,4 +266,6 @@ _여기까지 직렬화된 FlatBuffer 모델을 사용하는 이유부터 Alloca
 
 
 
-참고자료 : https://www.tensorflow.org/lite/
+참고자료 : 
++ https://www.tensorflow.org/lite/
++ https://github.com/tensorflow/tflite-micro
